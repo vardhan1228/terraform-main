@@ -89,13 +89,13 @@ resource "aws_security_group" "cust-sg" {
 }
 
 # create ec2 
-resource "aws_instance" "day2" {
-ami = var.ami
-instance_type = var.instance_type
-key_name = var.key_name
-subnet_id = aws_subnet.day2-sub2.id
-associate_public_ip_address = true  # for asign puble ip
-}
+#resource "aws_instance" "day2" {
+#ami = var.ami
+#instance_type = var.instance_type
+#key_name = var.key_name
+#subnet_id = aws_subnet.day2-sub2.id
+#associate_public_ip_address = true  # for asign puble ip
+#}
 
 
 

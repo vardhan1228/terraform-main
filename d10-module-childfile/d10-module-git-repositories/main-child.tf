@@ -1,4 +1,0 @@
-module "vsv" {
-    source = "value"
-  
-}

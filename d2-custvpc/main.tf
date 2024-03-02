@@ -59,34 +59,34 @@ resource "aws_route_table_association" "day2-rt-sub2" {
   subnet_id = aws_subnet.day2-sub2.id
 }
 # create security group
-resource "aws_security_group" "cust-sg" {
-    vpc_id = aws_vpc.day2-vpc.id
-    tags = {
-    Name = "cust-sg"
-  }
-  ingress {
-    description = "http for sg"
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    description = "ssh for sg"
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+# resource "aws_security_group" "cust-sg" {
+#     vpc_id = aws_vpc.day2-vpc.id
+#     tags = {
+#     Name = "cust-sg"
+#   }
+  # ingress {
+  #   description = "http for sg"
+  #   from_port = 80
+  #   to_port = 80
+  #   protocol = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
+  # ingress {
+  #   description = "ssh for sg"
+  #   from_port = 22
+  #   to_port = 22
+  #   protocol = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
 
-  }
-  egress {
-    description = "outbond of sg"
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+  # }
+  # egress {
+  #   description = "outbond of sg"
+  #   from_port = 0
+  #   to_port = 0
+  #   protocol = "-1"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
+#}
 
 # create ec2 
 #resource "aws_instance" "day2" {

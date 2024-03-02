@@ -5,6 +5,8 @@ resource "aws_instance" "sri" {
     ami = var.ami
     instance_type = var.instance_type
     key_name = var.key_name
+    subnet_id = "subnet-079be1291a716bc9f"
+    #security_groups = ["sg-0d138fe483dc8a05b"]
     for_each = toset(var.tags)
     tags = {
       Name = each.value

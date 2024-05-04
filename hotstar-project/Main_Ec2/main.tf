@@ -1,12 +1,12 @@
 resource "aws_instance" "web" {
   ami                    = "ami-051f8a213df8bc089"  #change ami id for different region
-  instance_type          = "t2.large"
+  instance_type          = "t3.large"
   key_name               = "sri"              #change key name as per your setup
-  vpc_security_group_ids = [aws_security_group.vardhan.id]
+  vpc_security_group_ids = [aws_security_group.vardhan1.id]
   user_data              = templatefile("./install.sh", {})
 
   tags = {
-    Name = "Hotstar-project"
+    Name = "Hotstar-project2"
   }
 
   root_block_device {
@@ -14,8 +14,8 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_security_group" "vardhan" {
-  name        = "devops-project-vardhan"
+resource "aws_security_group" "vardhan1" {
+  name        = "devops-project-vardhan1"
   description = "Allow TLS inbound traffic"
 
   ingress = [
@@ -40,7 +40,7 @@ resource "aws_security_group" "vardhan" {
   }
 
   tags = {
-    Name = "devops-project-vardhan"
+    Name = "devops-project-vardhan1"
   }
 }
 

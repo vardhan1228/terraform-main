@@ -1,6 +1,5 @@
 provider "aws" {
   
-
 }
 resource "aws_db_instance" "rds" {
   allocated_storage    = var.main_allocated_storage

@@ -7,6 +7,9 @@ terraform {
     bucket = "vardhan121213212"
     key = "d7dblock/terraform.tfstate"
     region = "us-east-1"
+    dynamodb_table = "terraform-state-lock-dynamo"
+    encrypt        = true
+
     
   }
 }

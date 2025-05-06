@@ -26,8 +26,8 @@
     "CommitRate": 10000
   },
   "Logging": {
-    "EnableLogging": false,
-    "EnableLogContext": false,
+    "EnableLogging": true,
+    "EnableLogContext": true,
     "LogComponents": [
       {
         "Id": "SOURCE_UNLOAD",
@@ -49,9 +49,7 @@
         "Id": "TASK_MANAGER",
         "Severity": "LOGGER_SEVERITY_DEFAULT"
       }
-    ],
-    "CloudWatchLogGroup": null,
-    "CloudWatchLogStream": null
+    ]
   },
   "ControlTablesSettings": {
     "ControlSchema": "",
@@ -122,6 +120,5 @@
   "PostProcessingRules": null,
   "CharacterSetSettings": null,
   "LoopbackPreventionSettings": null,
-  "BeforeImageSettings": null,
-  "FailTaskWhenCleanTaskResourceFailed": false
+  "BeforeImageSettings": null
 }

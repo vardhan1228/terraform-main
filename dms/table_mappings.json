@@ -5,8 +5,8 @@
       "rule-id": "118026958",
       "rule-name": "118026958",
       "object-locator": {
-        "schema-name": "dbo",
-        "table-name": "table1"
+        "schema-name": "vsv",
+        "table-name": "customers"
       },
       "rule-action": "include",
       "filters": [],
@@ -18,8 +18,8 @@
       "rule-id": "118010566",
       "rule-name": "118010566",
       "object-locator": {
-        "schema-name": "dbo",
-        "table-name": "table2"
+        "schema-name": "vsv",
+        "table-name": "users"
       },
       "rule-action": "include",
       "filters": [],

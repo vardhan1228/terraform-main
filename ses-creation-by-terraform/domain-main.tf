@@ -18,7 +18,7 @@ resource "aws_ses_domain_dkim" "dkim_identity" {
 
 resource "aws_route53_record" "amazonses_dkim_record" {
   count   = 3
-  zone_id = aws_route53_zone.route_53_zone.zone_id
+  zone_id = data.aws_route53_zone.route_53_zone.zone_id
   name    = "${aws_ses_domain_dkim.dkim_identity.dkim_tokens[count.index]}._domainkey.${aws_ses_domain_identity.domain_identity.domain}"
   type    = "CNAME"
   ttl     = "300"
@@ -34,7 +34,7 @@ resource "aws_ses_email_identity" "email_identity" {
   email = "awscloud1211@gmail.com"
 }
 
-resource "aws_route53_zone" "route_53_zone" {
+data "aws_route53_zone" "route_53_zone" {
   name = var.domain_name
 }
 

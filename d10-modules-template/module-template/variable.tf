@@ -15,3 +15,8 @@ description = "keyname value"
 type = string
 default = ""
 }
+variable "s3" {
+type = string
+default = ""
+  
+}

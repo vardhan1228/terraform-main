@@ -1,4 +1,5 @@
 provider "aws" {
+  region = "ap-south-1"
 
   
 }
@@ -13,25 +14,27 @@ resource "aws_dms_replication_instance" "dms_replication_instance" {
 }
  
 resource "aws_dms_endpoint" "source_endpoint" { 
-  endpoint_id     = "database-2" 
-  database_name = "vardhan"
+  endpoint_id     = "source-ec2" 
+  # database_name = "vardhan"
   endpoint_type   = "source" 
-  engine_name     = "sqlserver"  // substitute here with the name of your source database engine 
-  username        = "sa"  // substitute with your database username 
-  password        = "sa"  // substitute with your database password 
-  port            = "1433"
-  server_name     = "ec2-3-91-38-10.compute-1.amazonaws.com"  // substitute with your source server name 
+  engine_name     = "mysql"  // substitute here with the name of your source database engine 
+  username        = "root"  // substitute with your database username 
+  password        = "Admin@123"  // substitute with your database password 
+  port            = "3306"
+  server_name     = "ec2-65-0-131-143.ap-south-1.compute.amazonaws.com"  // substitute with your source server name 
+  depends_on = [ aws_dms_replication_instance.dms_replication_instance ]
 } 
  
 resource "aws_dms_endpoint" "target_endpoint" { 
-  endpoint_id     = "database-3taget"
+  endpoint_id     = "rds-taget"
   endpoint_type   = "target" 
-  database_name = "DMSDemodb"
- port             = "1433"
-  engine_name     = "sqlserver"  // substitute here with the name of your target database engine 
+  # database_name = "DMSDemodb"
+ port             = "3306"
+  engine_name     = "mysql"  // substitute here with the name of your target database engine 
   username        = "admin"  // substitute with your database username 
-  password        = "admin1211"  // substitute with your database password 
-  server_name     = "database-1.chyljtisxani.us-east-1.rds.amazonaws.com"  // substitute with your target server name 
+  password        = "srivardhan1211"  // substitute with your database password 
+  server_name     = "dms.c7s0iqse4usm.ap-south-1.rds.amazonaws.com"  // substitute with your target server name 
+  depends_on = [ aws_dms_replication_instance.dms_replication_instance ]
 } 
  
 resource "aws_dms_replication_task" "dms_replication_task" { 
@@ -42,4 +45,5 @@ resource "aws_dms_replication_task" "dms_replication_task" {
   source_endpoint_arn     = aws_dms_endpoint.source_endpoint.endpoint_arn 
   target_endpoint_arn     = aws_dms_endpoint.target_endpoint.endpoint_arn 
   table_mappings          = file("table_mappings.json") #add your table mappings here 
+  depends_on = [ aws_dms_replication_instance.dms_replication_instance,aws_dms_endpoint.source_endpoint,aws_dms_endpoint.target_endpoint ]
 }

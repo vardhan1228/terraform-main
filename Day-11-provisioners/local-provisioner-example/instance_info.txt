@@ -1,0 +1,1 @@
+Instance public IP is 50.16.10.249 

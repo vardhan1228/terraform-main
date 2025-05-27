@@ -8,7 +8,7 @@ sudo yum install git -y
 
 #-------java dependency for jenkins------------
 
-sudo dnf install java-11-amazon-corretto -y
+sudo dnf install java-17-amazon-corretto -y
 
 #------------jenkins install-------------
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
